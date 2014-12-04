@@ -52,5 +52,22 @@ Pillar.Babysitter = {
 		totalFees += Pillar.Babysitter.asleepRate * hourSet.asleepHours;
 		totalFees += Pillar.Babysitter.overnightRate * hourSet.postMidnightHours;
 		return totalFees;
+	},
+	process                   : function process() {
+		Pillar.Babysitter.startTime = moment( $( '#start-time' ).val() );
+		Pillar.Babysitter.bedTime = moment( $( '#bed-time' ).val() );
+		Pillar.Babysitter.endTime = moment( $( '#end-time' ).val() );
+		var total = Pillar.Babysitter.calculateFees();
+		$( '#calculate-time' ).val( '$' + total );
 	}
 };
+
+$( document ).ready( function() {
+	$( '#start-time' ).datetimepicker();
+	$( '#bed-time' ).datetimepicker();
+	$( '#end-time' ).datetimepicker();
+
+	$( '#calculate-button' ).off( 'click' ).on( 'click', function( event ) {
+		Pillar.Babysitter.process();
+	} );
+} );

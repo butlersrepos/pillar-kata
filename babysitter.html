@@ -3,9 +3,34 @@
 	<head lang="en">
 		<meta charset="UTF-8">
 		<title>Babysitter Kata</title>
+		<link rel="stylesheet" href="css/babysitter.css"/>
+		<link rel="stylesheet" href="css/jquery.datetimepicker.css"/>
+		<script src="js/moment.js"></script>
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/jquery.datetimepicker.js"></script>
 		<script src="js/babysitter.js"></script>
 	</head>
 	<body>
+		<img id="main-image" src="http://mtv.mtvnimages.com/shared/media/images/acovers/standard/drb700/b722/b72222dt5h8.jpg"/>
 
+		<div id="start-slot" class="input-slot">
+			<label for="start-time">Start:</label>
+			<input id="start-time" name="start-input"/>
+		</div>
+
+		<div id="bed-slot" class="input-slot">
+			<label for="bed-time">Bed:</label>
+			<input id="bed-time" name="bed-input"/>
+		</div>
+
+		<div id="end-slot" class="input-slot">
+			<label for="end-time">Finish:</label>
+			<input id="end-time" name="end-input"/>
+		</div>
+
+		<div id="calculate-slot" class="input-slot">
+			<button id="calculate-button">Calculate</button>
+			<input id="calculate-time" name="calculate-time" disabled/>
+		</div>
 	</body>
 </html>

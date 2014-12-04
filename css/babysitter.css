@@ -1,0 +1,46 @@
+html, body, #main-image {
+	height: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 8px;
+}
+
+.input-slot {
+	position: absolute;
+	color: white;
+	text-transform: uppercase;
+	font-family: sans-serif;
+	font-weight: bold;
+	left: 10%;
+	background: black;
+	max-width: 85%;
+}
+
+#start-slot {
+	top: 24%;
+}
+
+#bed-slot {
+	top: 38%;
+}
+
+#end-slot {
+	top: 54%;
+}
+
+#calculate-slot {
+	top: 75%;
+	background: none;
+}
+
+#calculate-button {
+	background: black;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	border: 2px solid #eee;
+}
