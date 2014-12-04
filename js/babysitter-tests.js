@@ -91,6 +91,6 @@ QUnit.test( "parse hours tests", function( assert ) {
 	var hourSet = Pillar.Babysitter.parseHours();
 
 	assert.equal( hourSet.awakeHours == 4, true, '5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
-	assert.equal( hourSet.dayOneHours == 3, true, '5pm - 4am with 9pm bedtime; 3 hrs succeeds' );
-	assert.equal( hourSet.dayTwoHours == 4, true, '5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
+	assert.equal( hourSet.asleepHours == 3, true, '5pm - 4am with 9pm bedtime; 3 hrs succeeds' );
+	assert.equal( hourSet.postMidnightHours == 4, true, '5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
 } );
