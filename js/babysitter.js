@@ -4,6 +4,9 @@ Pillar.Babysitter = {
 	startTime                 : null,
 	endTime                   : null,
 	bedTime                   : null,
+	awakeRate                 : 12,
+	asleepRate                : 8,
+	overnightRate             : 16,
 	validInputs               : function validInputs() {
 		if( !Pillar.Babysitter.startTime || !Pillar.Babysitter.endTime || !Pillar.Babysitter.bedTime ) {
 			console.debug( 'One of the time components is missing!' );
@@ -43,6 +46,11 @@ Pillar.Babysitter = {
 	},
 	calculateFees             : function calculateFees() {
 		if( !Pillar.Babysitter.validInputs() ) { return 0; }
-
+		var hourSet = Pillar.Babysitter.parseHours();
+		var totalFees = 0;
+		totalFees += Pillar.Babysitter.awakeRate * hourSet.awakeHours;
+		totalFees += Pillar.Babysitter.asleepRate * hourSet.asleepHours;
+		totalFees += Pillar.Babysitter.overnightRate * hourSet.postMidnightHours;
+		return totalFees;
 	}
 };
