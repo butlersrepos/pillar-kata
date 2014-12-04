@@ -1,6 +1,6 @@
-var pillar = pillar || {};
+var Pillar = Pillar || {};
 
-pillar.babysitter = {
+Pillar.Babysitter = {
 	startTime                 : null,
 	endTime                   : null,
 	bedTime                   : null,
@@ -11,7 +11,13 @@ pillar.babysitter = {
 		return -1;
 	},
 	calculateAwakeHours       : function calculateAwakeHours() {
-		return -1;
+		if( !Pillar.Babysitter.startTime || !Pillar.Babysitter.endTime || !Pillar.Babysitter.bedTime ) {
+			console.debug( 'Either the start time or the end time are missing!' );
+			return 0;
+		}
+		var hours = Pillar.Babysitter.bedTime.diff( Pillar.Babysitter.startTime, 'hours' );
+		return Math.max( 0, hours );
+
 	},
 	parseHours                : function parseHours() {
 		return {};
