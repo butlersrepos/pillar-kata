@@ -90,7 +90,7 @@ QUnit.test( "parse hours tests", function( assert ) {
 	// but in a larger project this test would serve as a check on changes within parseHours()
 	var hourSet = Pillar.Babysitter.parseHours();
 
-	assert.equal( hourSet.awakeHours == 4, true, '5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
-	assert.equal( hourSet.asleepHours == 3, true, '5pm - 4am with 9pm bedtime; 3 hrs succeeds' );
-	assert.equal( hourSet.postMidnightHours == 4, true, '5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
+	assert.equal( hourSet.awakeHours == 4, true, 'Awake hours for 5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
+	assert.equal( hourSet.asleepHours == 3, true, 'Asleep hours for 5pm - 4am with 9pm bedtime; 3 hrs succeeds' );
+	assert.equal( hourSet.postMidnightHours == 4, true, 'Overnight hours for 5pm - 4am with 9pm bedtime; 4 hrs succeeds' );
 } );

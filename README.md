@@ -1,5 +1,9 @@
 pillar-kata
 ===========
+To Run: Open babysitter.html in a browser.
+
+To Run Tests: Simply open tests.html in a browser.
+
 Task: Make a babysitter fee calculator.
 
 Language chosen: Javascript.
