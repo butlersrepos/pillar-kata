@@ -25,6 +25,7 @@ Pillar.Babysitter = {
 	},
 	calculateAsleepHours      : function calculateAsleepHours() {
 		if( !Pillar.Babysitter.validInputs() ) { return 0; }
+		if( Pillar.Babysitter.bedTime.isAfter( Pillar.Babysitter.endTime ) ) { return 0; }
 		var hours = Pillar.Babysitter.endTime.diff( Pillar.Babysitter.bedTime, 'hours' );
 
 		var postMidnightHours = Pillar.Babysitter.calculatePostMidnightHours();
@@ -33,7 +34,8 @@ Pillar.Babysitter = {
 	},
 	calculateAwakeHours       : function calculateAwakeHours() {
 		if( !Pillar.Babysitter.validInputs() ) { return 0; }
-		var hours = Pillar.Babysitter.bedTime.diff( Pillar.Babysitter.startTime, 'hours' );
+		var hours = Pillar.Babysitter.endTime.diff( Pillar.Babysitter.startTime, 'hours' );
+		hours -= Pillar.Babysitter.calculateAsleepHours();
 		return Math.max( 0, hours );
 	},
 	parseHours                : function parseHours() {
@@ -63,9 +65,25 @@ Pillar.Babysitter = {
 };
 
 $( document ).ready( function() {
-	$( '#start-time' ).datetimepicker();
-	$( '#bed-time' ).datetimepicker();
-	$( '#end-time' ).datetimepicker();
+	$( '#start-time' ).datetimepicker( {
+		datepicker: false,
+		allowTimes: [
+			'17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
+		]
+	} );
+	$( '#bed-time' ).datetimepicker( {
+		datepicker: false,
+		allowTimes: [
+			'17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
+		]
+	} );
+	$( '#end-time' ).datetimepicker( {
+		minDate   : 0,
+		maxDate   : '+1970/01/02',
+		allowTimes: [
+			'17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00', '03:00', '04:00'
+		]
+	} );
 
 	$( '#calculate-button' ).off( 'click' ).on( 'click', function( event ) {
 		Pillar.Babysitter.process();
