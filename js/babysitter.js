@@ -36,6 +36,7 @@ Pillar.Babysitter = {
 		if( !Pillar.Babysitter.validInputs() ) { return 0; }
 		var hours = Pillar.Babysitter.endTime.diff( Pillar.Babysitter.startTime, 'hours' );
 		hours -= Pillar.Babysitter.calculateAsleepHours();
+		hours -= Pillar.Babysitter.calculatePostMidnightHours();
 		return Math.max( 0, hours );
 	},
 	parseHours                : function parseHours() {
